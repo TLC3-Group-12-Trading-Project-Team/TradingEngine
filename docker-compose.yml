@@ -1,0 +1,10 @@
+version: '2'
+services:
+  trade-server-prod:
+    container_name: trade-server-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #    image: message-server:latest
+    ports:
+      - 23000:23000

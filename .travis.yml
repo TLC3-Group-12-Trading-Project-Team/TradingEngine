@@ -1,0 +1,28 @@
+language: java
+
+
+jdk:
+  - openjdk15
+
+services:
+  - docker
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.25.3
+
+
+before_install:
+  - chmod a+x gradlew
+  - export PATH=$PATH:$HOME/.local/bin
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+
+script:
+  - docker-compose build --pull
+  - docker tag trade-engine-prod:latest elijahahianyo/trade-project:trade-engine-prod
+  - docker image ls
+  - docker push elijahahianyo/trade-project:trade-engine-prod #hms-api_django-api-dev:latest
