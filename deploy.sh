@@ -1,6 +1,6 @@
 mkdir -p ~/.ssh
 echo "private key ---------"
-echo "$PRIVATE_KEY"
+echo "$SECRET_KEY"
 echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
