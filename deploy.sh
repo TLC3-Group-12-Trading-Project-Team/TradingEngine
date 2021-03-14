@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 #ssh -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP_ADDRESS  mkdir /home/ubuntu/app
-scp  -o StrictHostKeyChecking=no -r ./env ./docker-compose.staging.yml ubuntu@$EC2_PUBLIC_IP_ADDRESS:/home/ubuntu/TradeProject/TradeEngine
+scp  -o StrictHostKeyChecking=no -r ./.env ./docker-compose.staging.yml ubuntu@$EC2_PUBLIC_IP_ADDRESS:/home/ubuntu/TradeProject/TradeEngine
 
 #mkdir -p ~/.ssh
 #echo "private key ---------"
