@@ -29,7 +29,7 @@ script:
   - docker image ls
   - docker push elijahahianyo/trade-project:trade-engine-prod #hms-api_django-api-dev:latest
   - ls -lh
-  - aws ssm send-command --document-name "AWS-RunShellScript" --instance-ids "i-052d4bdbeee05f5af" --parameters '{"commands":["sudo docker-compose -f /home/ubuntu/docker-compose.yml up -d --no-deps --build"],"executionTimeout":["3600"]}' --timeout-seconds 600 --region eu-central-1
+  - aws ssm send-command --document-name "AWS-RunShellScript" --instance-ids "i-00bd5a2c279b0213d" --parameters '{"commands":["sudo docker-compose -f /home/ubuntu/docker-compose.yml up -d --no-deps --build"],"executionTimeout":["3600"]}' --timeout-seconds 600 --region eu-central-1
 #deploy:
 #  skip_cleanup: true
 #  provider: elasticbeanstalk
