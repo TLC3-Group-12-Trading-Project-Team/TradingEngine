@@ -1,7 +1,9 @@
 mkdir -p ~/.ssh
+echo "private key ---------"
+echo "$PRIVATE_KEY"
 echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa
-chmod 700 ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_rsa
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
   #  ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
