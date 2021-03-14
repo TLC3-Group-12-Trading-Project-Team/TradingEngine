@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:experimental
 FROM openjdk:15-jdk-alpine as build
 WORKDIR /workspace/app
 
