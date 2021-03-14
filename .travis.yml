@@ -29,7 +29,7 @@ script:
   - docker image ls
   - docker push elijahahianyo/trade-project:trade-engine-prod #hms-api_django-api-dev:latest
   - ls -lh
-  - aws ssm send-command --document-name "AWS-RunShellScript" --instance-ids "i-00bd5a2c279b0213d" --parameters '{"commands":["sudo docker-compose -f /home/ubuntu/docker-compose.yml up -d --no-deps --build"],"executionTimeout":["3600"]}' --timeout-seconds 600 --region eu-central-1
+#  - aws ssm send-command --document-name "AWS-RunShellScript" --instance-ids "i-00bd5a2c279b0213d" --parameters '{"commands":["sudo docker-compose -f /home/ubuntu/docker-compose.yml up -d --no-deps --build"],"executionTimeout":["3600"]}' --timeout-seconds 600 --region eu-central-1
 #deploy:
 #  skip_cleanup: true
 #  provider: elasticbeanstalk
@@ -42,3 +42,15 @@ script:
 #  secret_access_key: $AWS_SECRET_KEY
 #  on:
 #    branch: master
+
+deploy:
+  mkdir -p ~/.ssh
+  echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  cat ~/.ssh/id_rsa
+  chmod 700 ~/.ssh/id_rsa
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+#  ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
+#  chmod +x ./deploy.sh
+  scp  -o StrictHostKeyChecking=no -r  ./docker-compose.yml ubuntu@$EC2_PUBLIC_IP_ADDRESS:/home/ubuntu/
+#  bash ./deploy.sh
