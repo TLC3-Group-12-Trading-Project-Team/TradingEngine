@@ -2,9 +2,6 @@ version: '2'
 services:
   trade-engine-prod:
     container_name: trade-engine-prod
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: elijahahianyo/trade-project:trade-engine-prod
     ports:
       - 23000:23000
