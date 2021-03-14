@@ -1,7 +1,7 @@
 mkdir -p ~/.ssh
 echo "private key ---------"
-echo "$SECRET_KEY"
-echo "$PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+echo "$SSH_KEY"
+echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
 eval "$(ssh-agent -s)"
