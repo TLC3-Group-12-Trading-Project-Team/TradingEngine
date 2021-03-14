@@ -20,8 +20,7 @@ env:
 
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_380d0f2de661_key -iv $encrypted_380d0f2de661_iv
-  -in trade-project.pem.enc -out .\\trade-project.pem -d
+- openssl aes-256-cbc -K $encrypted_5791aa5564ed_key -iv $encrypted_5791aa5564ed_iv -in trade-project.pem.enc -out trade-project.pem -d
 - eval "$(ssh-agent -s)"
 - cp ./trade-project ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
