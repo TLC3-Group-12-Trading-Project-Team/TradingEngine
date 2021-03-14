@@ -46,10 +46,19 @@ script:
 #  on:
 #    branch: master
 
-deploy:
-  provider: script
-  script: bash deploy.sh
-  on:
-    branch: master
-  skip_cleanup: true
+#deploy:
+#  provider: script
+#  script: bash deploy.sh
+#  on:
+#    branch: master
+#  skip_cleanup: true
       #  bash ./deploy.sh
+
+after_success:
+  - eval "$(ssh-agent -s)"
+  - mkdir -p ~/.ssh
+  - echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - cat ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh-add ~/.ssh/id_rsa
+  - scp  -o StrictHostKeyChecking=no -r  ./docker-compose.yml ubuntu@$EC2_PUBLIC_IP_ADDRESS:/home/ubuntu/

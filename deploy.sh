@@ -3,7 +3,7 @@ echo "private key ---------"
 echo "$SSH_KEY"
 echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa
-chmod 400 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
   #  ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
