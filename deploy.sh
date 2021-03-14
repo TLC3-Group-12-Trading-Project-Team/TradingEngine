@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-ssh ubuntu@$EC2_PUBLIC_IP_ADDRESS  -v exit
+ssh -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP_ADDRESS  mkdir /home/ubuntu/app
 
 
 #mkdir -p ~/.ssh
