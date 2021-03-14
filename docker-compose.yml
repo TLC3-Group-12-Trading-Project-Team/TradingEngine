@@ -1,7 +1,7 @@
 version: '2'
 services:
-  trade-server-prod:
-    container_name: trade-server-prod
+  trade-engine-prod:
+    container_name: trade-engine-prod
     build:
       context: .
       dockerfile: Dockerfile
