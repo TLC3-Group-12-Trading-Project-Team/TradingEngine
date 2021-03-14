@@ -10,4 +10,9 @@ public class HomeController {
     public String home(){
         return "Hello world!!";
     }
+
+    @RequestMapping("/hello")
+    public String hello(){
+        return "Hello world!!";
+    }
 }
