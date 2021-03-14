@@ -29,6 +29,7 @@ script:
   - docker push elijahahianyo/trade-project:trade-engine-prod #hms-api_django-api-dev:latest
 
 deploy:
+  skip_cleanup: true
   provider: elasticbeanstalk
   region: "eu-central-1"
   app: "TradeProject"
