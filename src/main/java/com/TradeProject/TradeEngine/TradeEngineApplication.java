@@ -1,4 +1,4 @@
-package com.TradeProject.TradeEngine.TradeEngine;
+package com.TradeProject.TradeEngine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

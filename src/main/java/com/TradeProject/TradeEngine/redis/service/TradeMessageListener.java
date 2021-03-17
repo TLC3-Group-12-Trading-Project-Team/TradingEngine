@@ -1,6 +1,6 @@
-package com.TradeProject.TradeEngine.TradeEngine.redis.service;
+package com.TradeProject.TradeEngine.redis.service;
 
-import com.TradeProject.TradeEngine.TradeEngine.redis.dto.MessageDto;
+import com.TradeProject.TradeEngine.redis.dto.MessageDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.Message;

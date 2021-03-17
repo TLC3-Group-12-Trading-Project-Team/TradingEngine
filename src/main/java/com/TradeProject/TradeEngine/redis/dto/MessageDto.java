@@ -1,4 +1,4 @@
-package com.TradeProject.TradeEngine.TradeEngine.redis.dto;
+package com.TradeProject.TradeEngine.redis.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

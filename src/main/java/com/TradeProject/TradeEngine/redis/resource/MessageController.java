@@ -1,6 +1,6 @@
-package com.TradeProject.TradeEngine.TradeEngine.redis.resource;
+package com.TradeProject.TradeEngine.redis.resource;
 
-import com.TradeProject.TradeEngine.TradeEngine.redis.service.TradeMessagePublisher;
+import com.TradeProject.TradeEngine.redis.service.TradeMessagePublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

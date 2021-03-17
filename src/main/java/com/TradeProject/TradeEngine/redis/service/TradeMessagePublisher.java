@@ -1,4 +1,4 @@
-package com.TradeProject.TradeEngine.TradeEngine.redis.service;
+package com.TradeProject.TradeEngine.redis.service;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;

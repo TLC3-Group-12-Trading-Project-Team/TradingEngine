@@ -1,6 +1,6 @@
-package com.TradeProject.TradeEngine.TradeEngine.redis.config;
+package com.TradeProject.TradeEngine.redis.config;
 
-import com.TradeProject.TradeEngine.TradeEngine.redis.service.TradeMessageListener;
+import com.TradeProject.TradeEngine.redis.service.TradeMessageListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -19,11 +19,6 @@ public class RedisConfig {
     private String channel;
 
     private ChannelTopic subChannel = ChannelTopic.of("tradeEngineTopic");
-
-    @Bean
-    public LettuceConnectionFactory lettuceConnectionFactory() {
-        return new LettuceConnectionFactory();
-    }
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
