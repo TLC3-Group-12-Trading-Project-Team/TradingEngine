@@ -29,18 +29,18 @@ public class TradeEngineApplication {
 		return builder.build();
 	}
 
-	@Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws RestClientException {
-		return args -> {
-
-			// * Use a webhook
-			// subscribe to exchange
-			restTemplate.postForEntity(
-					"https://exchange.matraining.com/md/subscription",
-					env.getProperty("app.host").concat(MARKETDATAWEBHOOKPATH),
-					null
-			);
-
-		};
-	}
+//	@Bean
+//	public CommandLineRunner run(RestTemplate restTemplate) throws RestClientException {
+//		return args -> {
+//
+//			// * Use a webhook
+//			// subscribe to exchange
+//			restTemplate.postForEntity(
+//					"https://exchange.matraining.com/md/subscription",
+//					env.getProperty("app.host").concat(MARKETDATAWEBHOOKPATH),
+//					null
+//			);
+//
+//		};
+//	}
 }
