@@ -60,4 +60,5 @@ public class RedisConfig {
         Jedis jedis = new Jedis("172.25.0.2", 6379);
         return jedis;
     }
+    
 }
