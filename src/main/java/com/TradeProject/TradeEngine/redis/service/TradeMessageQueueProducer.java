@@ -2,6 +2,7 @@ package com.TradeProject.TradeEngine.redis.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
@@ -10,12 +11,13 @@ import redis.clients.jedis.Jedis;
 public class TradeMessageQueueProducer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TradeMessageQueueProducer.class);
 
-    @Value("${redis.queue.name}")
+    @Value("${spring.redis.queue.name}")
     private String exchangeConnectionServiceQueue;
 
+    @Autowired
+    Jedis jedis;
+
     public void sendDataToRedisQueue(String input) {
-//		redisTemplate.convertAndSend(topic.getTopic(), input);
-        Jedis jedis = new Jedis("localhost",6379);
         jedis.rpush(exchangeConnectionServiceQueue,input);
         LOGGER.info("Data - " + input + " sent through Redis Topic - " );
         

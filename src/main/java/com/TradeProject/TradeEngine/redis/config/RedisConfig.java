@@ -11,6 +11,7 @@ import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import redis.clients.jedis.Jedis;
 
 @Slf4j
 @Configuration
@@ -48,4 +49,15 @@ public class RedisConfig {
         return ChannelTopic.of(channel);
     }
 
+    @Value("${spring.redis.port}")
+    int PORT;
+
+    @Value("${spring.redis.host}")
+    String URL;
+
+    @Bean
+    Jedis jedis(){
+        Jedis jedis = new Jedis("localhost", 6379);
+        return jedis;
+    }
 }
