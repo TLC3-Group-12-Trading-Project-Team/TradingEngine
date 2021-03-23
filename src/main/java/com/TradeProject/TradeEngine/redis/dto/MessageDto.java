@@ -1,13 +1,18 @@
 package com.TradeProject.TradeEngine.redis.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class MessageDto {
-    private String body;
+    private int portfolioId;
+    private String product;
+    private int quantity;
+    private double price;
+    private String side;
 
 }

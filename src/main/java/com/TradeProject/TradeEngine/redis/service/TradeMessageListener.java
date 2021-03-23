@@ -1,5 +1,6 @@
 package com.TradeProject.TradeEngine.redis.service;
 
+import com.TradeProject.TradeEngine.models.Orders;
 import com.TradeProject.TradeEngine.redis.dto.MessageDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -30,14 +31,14 @@ public class TradeMessageListener implements MessageListener {
     public void onMessage(Message message, byte[] pattern) {
 
         try {
-            MessageDto msg = objectMapper.readValue(message.getBody(), MessageDto.class);
-            logger.info(String.valueOf(msg));
-            if(msg != null) {
-                logger.info("Channel: {}, Message: {}", new String(message.getChannel()), msg.getBody());
+            Orders ord =objectMapper.readValue(message.toString(), Orders.class);
+            logger.info(String.valueOf(ord.toString()));
+            if(ord != null) {
+                logger.info("Channel: {}, Message: {}", new String(message.getChannel()), ord);
                 // perform trade engine logic
 
                 //is successful forward trade to queue
-                sender.sendDataToRedisQueue(String.valueOf(msg));
+                sender.sendDataToRedisQueue(String.valueOf(ord));
             }
         } catch (IOException e) {
             logger.error("Couldn't convert json", e);

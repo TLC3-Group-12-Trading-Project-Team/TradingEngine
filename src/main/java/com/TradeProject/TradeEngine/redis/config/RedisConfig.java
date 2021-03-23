@@ -19,7 +19,7 @@ public class RedisConfig {
     @Value("${redis.pubsub.channel.name}")
     private String channel;
 
-    private ChannelTopic subChannel = ChannelTopic.of("tradeEngineTopic");
+    private ChannelTopic subChannel = ChannelTopic.of("orderValidation");
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {

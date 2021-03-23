@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
 public class TradeEngineApplication {
@@ -28,6 +29,8 @@ public class TradeEngineApplication {
 	private static RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
+
+	
 
 //	@Bean
 //	public CommandLineRunner run(RestTemplate restTemplate) throws RestClientException {
