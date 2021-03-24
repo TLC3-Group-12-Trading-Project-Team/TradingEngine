@@ -1,7 +1,6 @@
 package com.TradeProject.TradeEngine.redis.service;
 
 import com.TradeProject.TradeEngine.models.Orders;
-import com.TradeProject.TradeEngine.redis.dto.MessageDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -32,16 +31,12 @@ public class TradeMessageListener implements MessageListener {
 
         try {
             Orders ord =objectMapper.readValue(message.toString(), Orders.class);
-            logger.info(String.valueOf(ord.toString()));
-            if(ord != null) {
-                logger.info("Channel: {}, Message: {}", new String(message.getChannel()), ord);
-                // perform trade engine logic
-
-                //is successful forward trade to queue
-                sender.sendDataToRedisQueue(String.valueOf(ord));
-            }
+//            logger.info(String.valueOf(ord.toString()));
+//            System.out.println("PortfolioId "+ord.getId());
+//            System.out.println("Product "+ord.getProduct());
         } catch (IOException e) {
             logger.error("Couldn't convert json", e);
         }
+        logger.info("This is the data{}",message);
     }
 }
