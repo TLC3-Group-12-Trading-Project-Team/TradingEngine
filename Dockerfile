@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:experimental
 FROM openjdk:15-jdk-alpine as build
 WORKDIR /workspace/app
-
 COPY gradle gradle
 COPY build.gradle settings.gradle gradlew ./
 COPY src src
