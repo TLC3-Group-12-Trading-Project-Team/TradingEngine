@@ -24,15 +24,9 @@ public class TradeMessageQueueProducer {
     @Autowired
     Jedis jedis;
 
-    public void sendDataToRedisQueue(Order order) {
-        try {
-            String orderAsString = objectMapper.writeValueAsString(order);
-            jedis.rpush(exchangeConnectionServiceQueue,orderAsString);
-            LOGGER.info("Data - " + order + " sent through Redis Topic - " );
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
+    public void sendDataToRedisQueue(String input) {
+        jedis.rpush(exchangeConnectionServiceQueue,input);
+        LOGGER.info("Data - " + input + " sent through Redis Topic - " );
         
     }
 }
