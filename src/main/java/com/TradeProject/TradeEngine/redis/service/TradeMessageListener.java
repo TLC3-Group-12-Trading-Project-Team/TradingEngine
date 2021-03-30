@@ -37,7 +37,7 @@ public class TradeMessageListener implements MessageListener {
                 // perform trade engine logic
 
                 //is successful forward trade to queue
-                sender.sendDataToRedisQueue(String.valueOf(msg));
+//                sender.sendDataToRedisQueue(String.valueOf(msg));
             }
         } catch (IOException e) {
             logger.error("Couldn't convert json", e);
