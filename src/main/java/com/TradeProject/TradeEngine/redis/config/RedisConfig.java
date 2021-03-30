@@ -19,7 +19,7 @@ public class RedisConfig {
     @Value("${redis.pubsub.channel.name}")
     private String channel;
 
-    private ChannelTopic subChannel = ChannelTopic.of("tradeEngineTopic");
+    private ChannelTopic subChannel = ChannelTopic.of("orderValidation");
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
@@ -57,8 +57,8 @@ public class RedisConfig {
 
     @Bean
     Jedis jedis(){
-        Jedis jedis = new Jedis("172.25.0.2", 6379);
+        Jedis jedis = new Jedis(URL, 6379);
         return jedis;
     }
-
+    
 }

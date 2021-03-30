@@ -9,10 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
+@EnableScheduling
 public class TradeEngineApplication {
 	private static Logger logger = LoggerFactory.getLogger(TradeEngineApplication.class);
 	private static final String MARKETDATAWEBHOOKPATH = "/webhooks/market-data";
@@ -28,6 +31,8 @@ public class TradeEngineApplication {
 	private static RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
+
+	
 
 //	@Bean
 //	public CommandLineRunner run(RestTemplate restTemplate) throws RestClientException {

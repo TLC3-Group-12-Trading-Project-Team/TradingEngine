@@ -1,6 +1,9 @@
 package com.TradeProject.TradeEngine.redis.service;
 
-import com.TradeProject.TradeEngine.redis.dto.MessageDto;
+import com.TradeProject.TradeEngine.dto.Orders;
+import com.TradeProject.TradeEngine.services.BuyOrderService;
+import com.TradeProject.TradeEngine.services.SellOrderService;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -21,26 +24,43 @@ public class TradeMessageListener implements MessageListener {
     @Autowired
     private TradeMessageQueueProducer sender;
 
+    @Autowired
+    BuyOrderService buyOrderService;
+
+    @Autowired
+    SellOrderService sellOrderService;
 
     public TradeMessageListener(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
+        this.objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
 
         try {
-            MessageDto msg = objectMapper.readValue(message.getBody(), MessageDto.class);
-            logger.info(String.valueOf(msg));
-            if(msg != null) {
-                logger.info("Channel: {}, Message: {}", new String(message.getChannel()), msg.getBody());
-                // perform trade engine logic
 
+            Orders order =objectMapper.readValue(message.getBody(), Orders.class);
+            logger.info(String.valueOf(order.toString()));
+            if(order != null) {
+                logger.info("Channel: {}, Message: {}", new String(message.getChannel()), order);
+                logger.info("This is the data{}",message);
+                // perform trade engine logic
+                logger.info(order.getSide());
+                if(order.getSide().equals("BUY")){
+                    logger.info("do");
+                    buyOrderService.processOrder(order);
+                }
+                else if(order.getSide().equals("SELL")){
+                    logger.info("process sell order");
+                    sellOrderService.processOrder(order);
+                }
                 //is successful forward trade to queue
-//                sender.sendDataToRedisQueue(String.valueOf(msg));
+//                sender.sendDataToRedisQueue(String.valueOf(order));
             }
         } catch (IOException e) {
             logger.error("Couldn't convert json", e);
         }
+        logger.info("This is the data{}",message);
     }
 }
