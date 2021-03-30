@@ -14,9 +14,9 @@ public class RedisController {
     @Autowired
     private TradeMessageQueueProducer sender;
 
-    @PostMapping
-    public String sendDataToRedisQueue(@RequestBody Order orders) {
-        sender.sendDataToRedisQueue(orders);
-        return "Your message was recieved";
-    }
+//    @PostMapping
+//    public String sendDataToRedisQueue(@RequestBody Order orders) {
+//        sender.sendDataToRedisQueue(orders);
+//        return "Your message was recieved";
+//    }
 }
